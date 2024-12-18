@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 export default function Home() {
   return (
-    <div>
+    <>
       <header>
         <Nav />
       </header>
@@ -39,7 +39,7 @@ export default function Home() {
             <Image src="/img/todozen.png" alt="Bild från projektet TodoZen" width={500} height={500} />
             <h3>TodoZen</h3>
             <p>Ett kort beskrivning av projektet.</p>
-            <Link href="/project" className="btn">
+            <Link href="/project/" className="btn">
               Se mer
             </Link>
           </div>
@@ -55,6 +55,6 @@ export default function Home() {
       </section>
 
       <Footer />
-    </div>
+    </>
   )
 }
