@@ -122,6 +122,10 @@ section h2 {
     justify-content: center;
 }
 
+.details{
+    text-decoration: none;
+}
+
 .project-card {
     background-color: #FFFFFF;
     border: 2px solid #FADADD;
