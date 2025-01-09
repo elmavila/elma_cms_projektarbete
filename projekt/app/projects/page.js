@@ -1,8 +1,9 @@
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Image from 'next/image'
+import Link from 'next/link'
 
-export default function Home() {
+export default function Projects() {
   return (
     <>
       <header>
@@ -18,18 +19,14 @@ export default function Home() {
               <Image src="/img/chrochet.png" alt="Projekt 1" width={500} height={500} />
               <h3>Chrochet Site</h3>
               <p>En kort beskrivning av projektet.</p>
-              <a href="single-1.html" className="btn">
-                Se mer
-              </a>
+              <Link href="/project/chrochet-site" className="btn">Se mer</Link>
             </div>
             {/* <!-- Projekt 2 --> */}
             <div className="project-card">
               <Image src="/img/cakws&baked.png" alt="Projekt 2" width={500} height={500} />
               <h3>Caked & Baked</h3>
               <p>En kort beskrivning av projektet.</p>
-              <a href="single-2.html" className="btn">
-                Se mer
-              </a>
+              <Link href="/project/caked-baked" className="btn">Se mer</Link>
             </div>
 
             {/* <!-- Projekt 3 --> */}
@@ -37,9 +34,7 @@ export default function Home() {
               <Image src="/img/todozen.png" alt="Projekt 3" width={500} height={500} />
               <h3>TodoZen</h3>
               <p>En kort beskrivning av projektet.</p>
-              <a href="single-3.html" className="btn">
-                Se mer
-              </a>
+              <Link href="/project/todozen" className="btn">Se mer</Link>
             </div>
 
             {/* <!-- Projekt 4 --> */}
@@ -47,9 +42,7 @@ export default function Home() {
               <Image src="/img/drum.png" alt="Projekt 4" width={500} height={500} />
               <h3>Drum🥁Kit</h3>
               <p>En kort beskrivning av projektet.</p>
-              <a href="single-4.html" className="btn">
-                Se mer
-              </a>
+              <Link href="/project/drum-kit" className="btn">Se mer</Link>
             </div>
 
             {/* <!-- Projekt 5 --> */}
@@ -57,9 +50,7 @@ export default function Home() {
               <Image src="/img/tindog.png" alt="Projekt 5" width={500} height={500} />
               <h3>Tindog</h3>
               <p>En kort beskrivning av projektet.</p>
-              <a href="single-5.html" className="btn">
-                Se mer
-              </a>
+              <Link href="/project/tindog" className="btn">Se mer</Link>
             </div>
           </div>
         </section>

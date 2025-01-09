@@ -46,7 +46,7 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Image from 'next/image'
 
-export default function Home() {
+export default function Contact() {
   return (
     <>
       <header>
@@ -69,14 +69,14 @@ export default function Home() {
                 </li>
                 <li>
                   <strong>GitHub:</strong>{' '}
-                  <a href="https://github.com/ditt-github-användarnamn" target="_blank" rel="noopener noreferrer">
-                    github.com/ditt-github-användarnamn
+                  <a href="https://github.com/elmavila" target="_blank" rel="noopener noreferrer">
+                    github.com/elmavila
                   </a>
                 </li>
                 <li>
                   <strong>LinkedIn:</strong>{' '}
-                  <a href="https://linkedin.com/in/ditt-linkedin-profil" target="_blank" rel="noopener noreferrer">
-                    linkedin.com/in/ditt-linkedin-profil
+                  <a href="https://www.linkedin.com/in/elma-vila-3a1962289/" target="_blank" rel="noopener noreferrer">
+                    linkedin.com/in/elma-vila
                   </a>
                 </li>
               </ul>

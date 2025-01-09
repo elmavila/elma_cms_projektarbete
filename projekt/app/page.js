@@ -2,7 +2,10 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
-export default function Home() {
+import { getPageDataFromContentful } from './lib/api';
+export default async function Home() {
+  const dataFromContentful = await getPageDataFromContentful();
+  console.log(dataFromContentful);
   return (
     <>
       <header>
@@ -11,6 +14,8 @@ export default function Home() {
       {/* <!-- Hero-sektion --> */}
       <section className="hero">
         <div className="hero-content">
+          <h1>{dataFromContentful.title}</h1>
+          <p>{dataFromContentful.description}</p>
           <h1>Välkommen till Min Portfolio</h1>
           <p>Jag är en passionerad webbutvecklare med fokus på att skapa moderna och responsiva webbplatser.</p>
           <Link href="/projects" className="btn">
