@@ -17,12 +17,12 @@ export default async function Projects() {
         <section className="project-preview">
           <h2>Mina Projekt</h2>
           <div className="project-cards">
-            {allProjects?.map((project, index) => (
-              <div key={index} className="project-card">
-                <Image src={project.projectPhoto?.url || '/default-image.jpg'} alt={project.projectPhoto?.title || 'Bild saknas'} width={500} height={500} />
+            {allProjects.map((project) => (
+              <div key={project.slug} className="project-card">
+                <Image src={project.projectPhoto?.url} alt={project.projectPhoto?.title || 'Bild saknas'} width={500} height={500} />
                 <h3>{project.projectTitle}</h3>
                 <p>{project.projectDescription}</p>
-                <Link href={`/project/${project.projectTitle.toLowerCase().replace(/ /g, '-')}`} className="btn">
+                <Link href={`/project/${project.slug}`} className="btn">
                   Se mer
                 </Link>
               </div>

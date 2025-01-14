@@ -45,19 +45,40 @@ projectTitle
 
 const ALL_PROJECTS = `
   projectPhoto {
-      title
-      description
-      contentType
-      fileName
-      size
-      url
-      width
-      height
-    }
+        title
+        description
+        contentType
+        fileName
+        size
+        url
+        width
+        height
+      }
       projectTitle
       projectDescription
-      mainText
+      mainText{
+      json
+      }
+      slug
+      multiImgCollection{
+        items{
+          title
+          description
+          url
+          width
+          height
+        }
+      }
+      categoryCollection{
+        items{
+          title
+          slug
+        }
+      }
 `
+
+//kategorierna ska ha en query
+
 const ABOUT_PRESENTATION = `
   title
   description
@@ -78,17 +99,6 @@ const CONTACT_HEAD = `
     url
     description
     }
-`
-
-const SIGLE_PROJECT = `
-  title
-  description
-  projectUrl
-  slug
-  projectImage {
-    title
-    url
-  }
 `
 
 
@@ -137,7 +147,7 @@ export async function getPageDataFromFrontProjects() {
 export async function getAllProjects() {
   const query = await fetchGrafQL(`
     query {
-      allProjectsCollection {
+      allProjectsCollection (where: {slug_exists: true}) {
         items {
           ${ALL_PROJECTS}
         }
@@ -209,17 +219,17 @@ export async function getContactInfo() {
   return query?.data?.contactInformationCollection?.items || {}
 }
 
-export async function getSingleProject() {
+export async function getSingleProject(slug) {
   const query = await fetchGrafQL(`
     query {
-      projectCollection {
+      allProjectsCollection(where: {slug: "${slug}"}, limit: 1) {
         items {
-          ${SIGLE_PROJECT}
+          ${ALL_PROJECTS}
         }
       }
     }
   `)
-  return query?.data?.projectCollection?.items || {}
+  return query?.data?.allProjectsCollection?.items || {}
 }
 async function fetchGrafQL(query) {
   const response = await fetch('https://graphql.contentful.com/content/v1/spaces/8vn73cp47ezr', {
