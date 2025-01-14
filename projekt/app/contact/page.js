@@ -1,52 +1,13 @@
-// import Nav from '../components/Nav'
-// import Footer from '../components/Footer'
-// export default function Home() {
-//   return (
-//     <>
-//       <header>
-//         <Nav />
-//       </header>
-//       <main>
-//         <section className="contact-section">
-//           <div className="container">
-//             <h1>Kontakta Mig</h1>
-//             <p id="question">Har du frågor eller vill komma i kontakt med mig? Fyll i formuläret nedan eller använd mina kontaktuppgifter!</p>
-
-//             {/* <!-- Kontaktformulär --> */}
-//             <form action="#" method="POST" className="contact-form">
-//               <label htmlFor="name">Ditt Namn:</label>
-//               <input type="text" id="name" name="name" required />
-
-//               <label htmlFor="email">Din E-postadress:</label>
-//               <input type="email" id="email" name="email" required />
-
-//               <label htmlFor="message">Ditt Meddelande:</label>
-//               <textarea id="message" name="message" rows="5" required></textarea>
-
-//               <button type="submit">Skicka Meddelande</button>
-//             </form>
-
-//             <div className="contact-info">
-//               <h2>Kontaktuppgifter</h2>
-//               <p>
-//                 <strong>Email:</strong> <a href="mailto:elmavila02@gmail.com">elmavila02@gmail.com</a>
-//               </p>
-//               <p>
-//                 <strong>Telefon:</strong> 070-123 45 67
-//               </p>
-//             </div>
-//           </div>
-//         </section>
-//       </main>
-//       <Footer />
-//     </>
-//   )
-// }
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Image from 'next/image'
+import { getContactHead, getContactInfo } from '../lib/api'
 
-export default function Contact() {
+export default async function Contact() {
+  const contactHead = await getContactHead()
+  const contactInformation = await getContactInfo()
+  console.log(contactHead, contactInformation)
+
   return (
     <>
       <header>
@@ -55,30 +16,18 @@ export default function Contact() {
       <main>
         <section className="contact-page">
           <div className="container">
-            <h1>Kontakt-sida</h1>
+            <h1>{contactHead[0].title}</h1>
 
             {/* Bildsektion */}
-            <Image src="/img/potträtt.jpg" alt="Kontaktbild" width={250} height={250} />
-
+            <Image src={contactHead[0].img.url || '/default-image.jpg'} alt={contactHead?.img?.title || 'Bild saknas'} width={250} height={250} />
             {/* Kontaktuppgifter */}
             <div className="contact-details">
-              <h2>Kontaktuppgifter</h2>
+              <h2>{contactInformation[0].title}</h2>
               <ul>
-                <li>
-                  <strong>Email:</strong> <a href="mailto:elmavila02@gmail.com">elmavila02@gmail.com</a>
-                </li>
-                <li>
-                  <strong>GitHub:</strong>{' '}
-                  <a href="https://github.com/elmavila" target="_blank" rel="noopener noreferrer">
-                    github.com/elmavila
-                  </a>
-                </li>
-                <li>
-                  <strong>LinkedIn:</strong>{' '}
-                  <a href="https://www.linkedin.com/in/elma-vila-3a1962289/" target="_blank" rel="noopener noreferrer">
-                    linkedin.com/in/elma-vila
-                  </a>
-                </li>
+                {/* Här mappar vi över listan och renderar varje sträng direkt */}
+                {contactInformation[0].contactInformation.map((info, index) => (
+                  <li key={index}>{info}</li> // Rendera varje sträng i listan
+                ))}
               </ul>
             </div>
           </div>

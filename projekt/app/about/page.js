@@ -1,6 +1,11 @@
 import Nav from '../components/Nav'
 import Image from 'next/image'
-export default function About() {
+import { getAboutPresentation, getAboutEdu, getAboutWork } from '../lib/api'
+export default async function About() {
+  const aboutPresentation = await getAboutPresentation()
+  const aboutEdu = await getAboutEdu()
+  const aboutWork = await getAboutWork()
+  console.log(aboutPresentation, aboutEdu, aboutWork)
   return (
     <div>
       <header>
@@ -12,16 +17,23 @@ export default function About() {
           <div className="container">
             <div className="about-layout">
               <div className="text-column">
-                <h1>Om Mig</h1>
-                <p>Hej! Jag heter Elma Vila och jag brinner för webbutveckling och design. Jag älskar att skapa webblösningar som inte bara ser bra ut utan också fungerar smidigt och effektivt på alla enheter, oavsett om du använder en dator, telefon eller surfplatta.</p>
-                <h2>Min Resa</h2>
-                <p>Jag började min karriär inom webbutveckling med en passion för att lösa problem och skapa vackra, funktionella webbplatser. Efter att ha studerat på It-Högskolan i Göteborg har jag utvecklat flera projekt och fått djupa kunskaper inom HTML, CSS, JavaScript, och ramverk som React.</p>
-
-                <h2>Utöver webbutveckling</h2>
-                <p>Utanför kodningen älskar jag att virka, spela spel, umgås med vänner och baka. Jag tror att mina kreativa intressen ger mig inspiration och perspektiv som jag tar med mig in i mina projekt.</p>
+                <h1>{aboutPresentation[0].title}</h1>
+                <p>{aboutPresentation[0].description}</p>
+                <h2>{aboutEdu[0].title}</h2>
+                <ul>
+                  {aboutEdu[0].eduList.map((edu, index) => (
+                    <li key={index}>{edu}</li>
+                  ))}
+                </ul>
+                <h2>{aboutWork[0].title}</h2>
+                <ul>
+                  {aboutWork[0].works.map((works, index) => (
+                    <li key={index}>{works}</li>
+                  ))}
+                </ul>
               </div>
 
-              <div className="skills-column">
+              {/* <div className="skills-column">
                 <h2>Kompetenser</h2>
 
                 <div className="skill-category">
@@ -73,7 +85,7 @@ export default function About() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

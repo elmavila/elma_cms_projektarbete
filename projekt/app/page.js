@@ -2,10 +2,13 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getPageDataFromContentful } from './lib/api';
+import { getPageDataFromFrontPageHead, getPageDataFromFrontAbout, getPageDataFromFrontProjects } from './lib/api'
+
 export default async function Home() {
-  const dataFromContentful = await getPageDataFromContentful();
-  console.log(dataFromContentful);
+  const dataFromFrontPageHead = await getPageDataFromFrontPageHead()
+  const dataFromFrontPageAbout = await getPageDataFromFrontAbout()
+  const dataFromFrontPageProjects = await getPageDataFromFrontProjects()
+  console.log(dataFromFrontPageHead, dataFromFrontPageAbout, dataFromFrontPageProjects)
   return (
     <>
       <header>
@@ -14,23 +17,21 @@ export default async function Home() {
       {/* <!-- Hero-sektion --> */}
       <section className="hero">
         <div className="hero-content">
-          <h1>{dataFromContentful.title}</h1>
-          <p>{dataFromContentful.description}</p>
-          <h1>Välkommen till Min Portfolio</h1>
-          <p>Jag är en passionerad webbutvecklare med fokus på att skapa moderna och responsiva webbplatser.</p>
+          <h1>{dataFromFrontPageHead[0].title}</h1>
+          <p>{dataFromFrontPageHead[0].description}</p>
           <Link href="/projects" className="btn">
             Se mina projekt
           </Link>
         </div>
         <div className="hero-image">
-          <Image src="/img/potträtt.jpg" alt="Bild på mig" width={250} height={250} />
+          <Image src={dataFromFrontPageHead[0].imageFrontPage.url} alt={dataFromFrontPageHead[0].imageFrontPage.description} width={250} height={250} />
         </div>
       </section>
 
       {/* <!-- Kort Om Mig --> */}
       <section className="about-preview">
-        <h2>Om Mig</h2>
-        <p>Jag heter Elma Vila och jag brinner för att skapa användarvänliga webblösningar som fungerar smidigt på alla enheter. Med passion för både design och teknik strävar jag efter att bygga webbplatser som både ser bra ut och är funktionella.</p>
+        <h2>{dataFromFrontPageAbout[0]?.aboutMeTitle}</h2>
+        <p>{dataFromFrontPageAbout[0]?.aboutMeDescription}</p>
         <Link href="/about" className="btn">
           Läs mer om mig
         </Link>
@@ -38,20 +39,21 @@ export default async function Home() {
 
       {/* <!-- Projektförhandsvisning --> */}
       <section className="project-preview">
-        <h2>Utvalda Projekt</h2>
+        <h2>{dataFromFrontPageProjects[0].projectTitle}</h2>
         <div className="project-cards">
           <div className="project-card">
-            <Image src="/img/todozen.png" alt="Bild från projektet TodoZen" width={500} height={500} />
+            {dataFromFrontPageProjects[0].projectImg?.url ? <Image src={dataFromFrontPageProjects[0].projectImg.url} alt={dataFromFrontPageProjects[0].projectImg.description} width={500} height={500} /> : <div>Bild saknas</div>}
             <h3>TodoZen</h3>
-            <p>Ett kort beskrivning av projektet.</p>
+            <p>{dataFromFrontPageProjects[0].projectDescription1}</p>
             <Link href="/project/" className="btn">
               Se mer
             </Link>
           </div>
+
           <div className="project-card">
-            <Image src="/img/drum.png" alt="Bild från projektet Drum Kit" width={500} height={500} />
+            {dataFromFrontPageProjects[0].projectImg2?.url ? <Image src={dataFromFrontPageProjects[0].projectImg2.url} alt={dataFromFrontPageProjects[0].projectImg2.description} width={500} height={500} /> : <div>Bild saknas</div>}
             <h3>Drum🥁Kit</h3>
-            <p>Ett kort beskrivning av projektet.</p>
+            <p>{dataFromFrontPageProjects[0].projectDescription2}</p>
             <a href="single-4.html" className="btn">
               Se mer
             </a>
