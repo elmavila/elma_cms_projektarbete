@@ -41,7 +41,6 @@ projectTitle
         height
       }
       projectDescription2
-      slug
 `
 
 const ALL_PROJECTS = `
@@ -76,6 +75,7 @@ const ALL_PROJECTS = `
           slug
         }
       }
+      url
 `
 
 //kategorierna ska ha en query

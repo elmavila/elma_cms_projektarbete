@@ -21,7 +21,6 @@ export default async function Projects() {
             <button className="dropdown-button">
               Välj kategori
             </button>
-            
               <ul className="dropdown-menu">
                 <li>
                   <Link href="/projects/category/web">Webbprojekt</Link>

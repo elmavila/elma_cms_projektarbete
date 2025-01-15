@@ -43,7 +43,14 @@ export default async function singleProject({ params }) {
             <Image key={index} src={img.url} width={500} height={500} alt={img.description}></Image>
           ))}
         </div>
-        <div>Länk till projektet:</div>
+        <div className="project-link">
+          <p>Länk till projektet:</p>
+          {project.url && (
+            <a href={project.url} target="_blank" rel="noopener noreferrer">
+              {project.url}
+            </a>
+          )}
+        </div>
       </main>
       <Footer />
     </>
