@@ -9,6 +9,7 @@ export default async function Home() {
   const dataFromFrontPageAbout = await getPageDataFromFrontAbout()
   const dataFromFrontPageProjects = await getPageDataFromFrontProjects()
   console.log(dataFromFrontPageHead, dataFromFrontPageAbout, dataFromFrontPageProjects)
+
   return (
     <>
       <header>
@@ -38,28 +39,21 @@ export default async function Home() {
       </section>
 
       {/* <!-- Projektförhandsvisning --> */}
-      <section className="project-preview">
+      {/* <section className="project-preview">
         <h2>{dataFromFrontPageProjects[0].projectTitle}</h2>
         <div className="project-cards">
-          <div className="project-card">
-            {dataFromFrontPageProjects[0].projectImg?.url ? <Image src={dataFromFrontPageProjects[0].projectImg.url} alt={dataFromFrontPageProjects[0].projectImg.description} width={500} height={500} /> : <div>Bild saknas</div>}
-            <h3>TodoZen</h3>
-            <p>{dataFromFrontPageProjects[0].projectDescription1}</p>
-            <Link href="/project/" className="btn">
-              Se mer
-            </Link>
-          </div>
-
-          <div className="project-card">
-            {dataFromFrontPageProjects[0].projectImg2?.url ? <Image src={dataFromFrontPageProjects[0].projectImg2.url} alt={dataFromFrontPageProjects[0].projectImg2.description} width={500} height={500} /> : <div>Bild saknas</div>}
-            <h3>Drum🥁Kit</h3>
-            <p>{dataFromFrontPageProjects[0].projectDescription2}</p>
-            <a href="single-4.html" className="btn">
-              Se mer
-            </a>
-          </div>
+          {dataFromFrontPageProjects.map((project, index) => (
+            <div className="project-card" key={index}>
+              {project.projectImg?.url ? <Image src={project.projectImg.url} alt={project.projectImg.description} width={500} height={500} /> : <div>Bild saknas</div>}
+              <h3>{project.projectTitle}</h3>
+              <p>{project.projectDescription1}</p>
+              <Link href={`/project/${project.slug}`} className="btn">
+                Se mer
+              </Link>
+            </div>
+          ))}
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </>

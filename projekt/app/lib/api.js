@@ -41,6 +41,7 @@ projectTitle
         height
       }
       projectDescription2
+      slug
 `
 
 const ALL_PROJECTS = `
