@@ -16,6 +16,28 @@ export default async function Projects() {
       <main>
         <section className="project-preview">
           <h2>Mina Projekt</h2>
+          {/* Dropdown Menu */}
+          <div className="dropdown-container">
+            <button className="dropdown-button">
+              Välj kategori
+            </button>
+            
+              <ul className="dropdown-menu">
+                <li>
+                  <Link href="/projects/category/web">Webbprojekt</Link>
+                </li>
+                <li>
+                  <Link href="/projects/category/design">Design</Link>
+                </li>
+                <li>
+                  <Link href="/projects/category/mobile">Mobilapplikationer</Link>
+                </li>
+                <li>
+                  <Link href="/projects/category/other">Övrigt</Link>
+                </li>
+              </ul>
+
+          </div>
           <div className="project-cards">
             {allProjects.map((project) => (
               <div key={project.slug} className="project-card">

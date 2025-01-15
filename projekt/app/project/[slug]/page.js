@@ -1,5 +1,7 @@
 import { getSingleProject, getAllProjects } from '../../lib/api'
 import Image from 'next/image'
+import Nav from '../../components/Nav'
+import Footer from '../../components/Footer'
 
 export async function generateStaticParams() {
   const project = await getAllProjects()
@@ -13,21 +15,37 @@ export default async function singleProject({ params }) {
   console.log('alla', allProjects[0])
 
   if (!allProjects || allProjects.length === 0) {
-    return { notFound: true };
+    return { notFound: true }
   }
 
   const project = allProjects[0]
 
   return (
-    <main>
-      <h1>{project.projectTitle}</h1>
-      <div>Kategori: {project.categoryCollection?.items?.map((category) => category.title).join(', ')}</div>
-      {project.mainText?.json?.content?.map((text, index) => (
-        <div key={index}>{text.content[0].value}</div>
-      ))}
-      {project.multiImgCollection?.items?.map((img, index) => (
-        <Image key={index} src={img.url} width={500} height={500} alt={img.description}></Image>
-      ))}
-    </main>
+    <>
+      <header>
+        <Nav />
+      </header>
+      <main className="single-project-page">
+        <h1 className="project-title">{project.projectTitle}</h1>
+
+        <div className="project-details">
+          <div className="category-list">Kategori: {project.categoryCollection?.items?.map((category) => category.title).join(', ')}</div>
+        </div>
+
+        <div className="project-text">
+          {project.mainText?.json?.content?.map((text, index) => (
+            <div key={index}>{text.content[0].value}</div>
+          ))}
+        </div>
+
+        <div className="project-images">
+          {project.multiImgCollection?.items?.map((img, index) => (
+            <Image key={index} src={img.url} width={500} height={500} alt={img.description}></Image>
+          ))}
+        </div>
+        <div>Länk till projektet:</div>
+      </main>
+      <Footer />
+    </>
   )
 }

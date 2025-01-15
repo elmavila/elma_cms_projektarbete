@@ -324,74 +324,7 @@ section h2 {
   }
 }
 
-/* Kontakt*/
-/* .contact-section {
-  padding: 2rem;
-  text-align: center;
-}
-
-#question {
-  color: rgb(181, 180, 180);
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-form {
-  margin: 2rem 0;
-  text-align: left;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact-form label {
-  font-size: 1.2rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.contact-form button {
-  background-color: #FADADD;
-  padding: 0.8rem 2rem;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contact-form button:hover {
-  background-color: #333;
-  color: white;
-}
-
-.contact-info a {
-  margin-top: 2rem;
-  color: black;
-  text-decoration: none;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
-}
-
-.contact-info p {
-  font-size: 1.1rem;
-} */
-
+/* Kontakt */
 .contact-page {
   padding: 3rem 2rem;
   background-color: #F4F4F4;
@@ -449,6 +382,169 @@ section h2 {
 
 .contact-details a:hover {
   color: #FADADD;
+}
+
+/* Dropdown Container */
+.dropdown-container {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Dropdown Button */
+.dropdown-button {
+  background-color: #FADADD;
+  color: #333333;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  list-style: none;
+  padding: 10px 0;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f1f1f1;
+}
+
+/* Gör så att dropdownen inte syns om den är stängd */
+.dropdown-container ul {
+  display: none;
+}
+
+.dropdown-container ul.open {
+  display: block;
+}
+
+
+/* Huvudcontainer */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  /* Maxbredd för att hålla innehållet i en bra bredd */
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Omstrukturera om layouten för att vara mer centrerad */
+.about-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.text-column {
+  width: 100%;
+  max-width: 800px;
+  /* Begränsa bredden på texten för att inte bli för bred */
+}
+
+/* Headings */
+
+
+h2 {
+  margin-top: 30px;
+}
+
+/* Listor */
+ul {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+li {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Specifik CSS för singleProject-sidan */
+.single-project-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* För rubriken */
+.single-project-page .project-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* För kategori-listan */
+.single-project-page .category-list {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* För textavsnitten */
+.single-project-page .project-text {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* Specifik styling för bilder under varandra */
+.single-project-page .project-images {
+  display: flex;
+  flex-direction: column;
+  /* Visa bilder vertikalt */
+  gap: 20px;
+  /* Mellanrum mellan bilderna */
+  align-items: center;
+  /* Centrera bilderna horisontellt */
+  padding: 20px;
+}
+
+.single-project-page .project-images img {
+  max-width: 100%;
+  /* Se till att bilderna inte går utanför sin container */
+  height: auto;
+  /* Behåll bildens proportioner */
+  max-height: 300px;
+  /* Sätt en maximal höjd för bilderna */
+  object-fit: cover;
+  /* Se till att bilderna fyller sin behållare */
+  border-radius: 8px;
+  /* Lägg till rundade hörn för bilderna */
 }
 
 /* Footer */

@@ -1,11 +1,13 @@
 import Nav from '../components/Nav'
-import Image from 'next/image'
 import { getAboutPresentation, getAboutEdu, getAboutWork } from '../lib/api'
+import Footer from '../components/Footer'
+
 export default async function About() {
   const aboutPresentation = await getAboutPresentation()
   const aboutEdu = await getAboutEdu()
   const aboutWork = await getAboutWork()
   console.log(aboutPresentation, aboutEdu, aboutWork)
+
   return (
     <div>
       <header>
@@ -19,12 +21,14 @@ export default async function About() {
               <div className="text-column">
                 <h1>{aboutPresentation[0].title}</h1>
                 <p>{aboutPresentation[0].description}</p>
+
                 <h2>{aboutEdu[0].title}</h2>
                 <ul>
                   {aboutEdu[0].eduList.map((edu, index) => (
                     <li key={index}>{edu}</li>
                   ))}
                 </ul>
+
                 <h2>{aboutWork[0].title}</h2>
                 <ul>
                   {aboutWork[0].works.map((works, index) => (
@@ -32,10 +36,22 @@ export default async function About() {
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
-              {/* <div className="skills-column">
+      <Footer />
+    </div>
+  )
+}
+
+{
+  /* Kommentera bort om du inte vill ha skill-sektionen */
+}
+{
+  /* <div className="skills-column">
                 <h2>Kompetenser</h2>
-
                 <div className="skill-category">
                   <h3>Frontend</h3>
                   <div className="skill-icons">
@@ -85,11 +101,5 @@ export default async function About() {
                     </div>
                   </div>
                 </div>
-              </div> */}
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  )
+              </div> */
 }
