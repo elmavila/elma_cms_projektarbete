@@ -1,9 +1,7 @@
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { FlatCompat } from '@eslint/eslintrc'
-import { ESLint } from 'eslint'
 
-// Hämta nuvarande filens och katalogens path
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
@@ -12,15 +10,16 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 })
 
-// Skapa ESLint-konfigurationen
+// Flat config använder inte "extends" som en array
 const eslintConfig = [
-  // Använd FlatCompat för att inkludera konfigurationer
-  compat.extends('next/core-web-vitals'),
-  // Om du har andra inställningar kan du lägga till dem här
+  compat.extends('next/core-web-vitals'), // Använd "extends" korrekt här
   {
-    files: ['*.js', '*.ts'], // Ställ in filer där denna konfiguration ska gälla
+    files: ['*.ts', '*.js'], // Ställ in de filer denna konfiguration gäller för
     parserOptions: {
-      ecmaVersion: 2021, // Sätt till den ECMAScript-version du använder
+      ecmaVersion: 2021, // Ange den ECMAScript-version du använder
+    },
+    rules: {
+      // Lägg till egna regler här om du behöver
     },
   },
 ]
