@@ -476,11 +476,27 @@ section h2 {
   font-weight: bold;
 }
 
+.project-card a.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #FADADD;
+  color: #2E2E2E;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.project-card a.btn:hover {
+  background-color: #333333;
+  color: #FFFFFF;
+}
 .backButton a:hover {
   color: #FFFFFF;
 }
 
-
+.filtered-projects-cards{
+  
+}
 
 /* Responsiv Anpassning */
 @media (max-width: 1024px) {

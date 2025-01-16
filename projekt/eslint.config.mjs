@@ -19,7 +19,6 @@ const eslintConfig = [
       ecmaVersion: 2021, // Ange den ECMAScript-version du använder
     },
     rules: {
-      // Lägg till egna regler här om du behöver
     },
   },
 ]
