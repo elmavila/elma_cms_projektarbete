@@ -1,3 +1,4 @@
+require('dotenv').config()
 const FRONT_HEAD_FIELDS = `
   title
   description
@@ -300,10 +301,10 @@ export async function getFilterdProjects(slug, limit = 10) {
   return filterdQuery
 }
 async function fetchGrafQL(query) {
-  const response = await fetch('https://graphql.contentful.com/content/v1/spaces/8vn73cp47ezr', {
+  const response = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer C5hlqTdn6WC7Qt3pa9XdsD3DJlvSXh2AE-6CqnF74Ro`,
+      Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query }),
