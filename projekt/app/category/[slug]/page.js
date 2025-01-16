@@ -4,18 +4,16 @@ import Link from 'next/link'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 
+// Genererar statiska parametrar för projekt baserat på deras 'slug'
 export async function generateStaticParams() {
   const allProjects = await getAllProjects()
-  return allProjects.map((project) => ({
-    slug: project.slug,
-  }))
+  return allProjects.map((project) => ({ slug: project.slug }))
 }
 
+// Komponent som visar filtrerade projekt baserat på vald kategori
 export default async function FilterdProjects({ params }) {
   const query = await getFilterdProjects(params.slug)
   const FilterdProjects = query?.data?.categoryCollection?.items || []
-  console.log('Filtered projects', query?.data?.categoryCollection)
-
   const allCategories = await getCategory()
 
   return (
@@ -26,9 +24,10 @@ export default async function FilterdProjects({ params }) {
       <main>
         <section className="project-preview">
           <h2>Mina Projekt</h2>
-          <div className="divider"></div>
           <button>
-            <Link href="/projects" className='backButton'>Tillbaka</Link>
+            <Link href="/projects" className="backButton">
+              Tillbaka
+            </Link>{' '}
           </button>
           <div className="category-list">
             <h3>Kategorier</h3>
@@ -40,8 +39,8 @@ export default async function FilterdProjects({ params }) {
               ))}
             </ul>
           </div>
-
           <div className="filtered-projects-cards">
+            {/* Itererar genom de filtrerade projekten och skapar en kort för varje kategori */}
             {FilterdProjects.map((category) => (
               <div key={category.slug} className="filtered-projects-card">
                 <h2>Kategori: {category.title}</h2>

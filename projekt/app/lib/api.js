@@ -1,4 +1,6 @@
 require('dotenv').config()
+// Laddar miljövariabler från en `.env`-fil för att hantera känslig information som API-nycklar.
+
 const FRONT_HEAD_FIELDS = `
   title
   description
@@ -78,9 +80,6 @@ const ALL_PROJECTS = `
       }
       url
 `
-
-//kategorierna ska ha en query
-
 const CATEGORY_FIELDS = `
   title
   slug
@@ -297,7 +296,6 @@ export async function getFilterdProjects(slug, limit = 10) {
       }
     }
   `)
-  // console.log("filtrerade projekt 2", filterdQuery);
   return filterdQuery
 }
 async function fetchGrafQL(query) {

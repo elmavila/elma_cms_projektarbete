@@ -1,13 +1,16 @@
+// Importerar nödvändiga komponenter och funktioner
 import Nav from '../components/Nav'
 import { getAboutPresentation, getAboutEdu, getAboutWork } from '../lib/api'
 import Footer from '../components/Footer'
 
+// Definierar About-komponenten som en asynkron funktion
 export default async function About() {
+  // Hämtar data för about-sidan
   const aboutPresentation = await getAboutPresentation()
   const aboutEdu = await getAboutEdu()
   const aboutWork = await getAboutWork()
-  console.log(aboutPresentation, aboutEdu, aboutWork)
 
+  // Returnerar JSX-strukturen för about-sidan
   return (
     <div>
       <header>
@@ -19,6 +22,7 @@ export default async function About() {
           <div className="container">
             <div className="about-layout">
               <div className="text-column">
+                {/* [0] används för att få det första objektet i aboutPresentation-arrayen */}
                 <h1>{aboutPresentation[0].title}</h1>
                 <p>{aboutPresentation[0].description}</p>
 
