@@ -25,6 +25,7 @@ export default async function FilterdProjects({ params }) {
       </header>
       <main>
         <section className="project-preview">
+          <h1>Mina Projekt22</h1>
           <h2>Mina Projekt</h2>
           <div className="divider"></div>
           <button>
