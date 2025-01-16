@@ -2,10 +2,11 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getAllProjects } from '../lib/api'
+import { getAllProjects, getCategory} from '../lib/api'
 
 export default async function Projects() {
   const allProjects = await getAllProjects()
+  const allCategories = await getCategory()
   console.log(allProjects)
 
   return (
@@ -16,27 +17,20 @@ export default async function Projects() {
       <main>
         <section className="project-preview">
           <h2>Mina Projekt</h2>
-          {/* Dropdown Menu */}
-          <div className="dropdown-container">
-            <button className="dropdown-button">
-              Välj kategori
-            </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link href="/projects/category/web">Webbprojekt</Link>
+          {/* Divider */}
+          <div className="divider"></div>
+          {/* Kategorier Sektion */}
+          <div className="category-list">
+            <h3>Kategorier</h3>
+            <ul>
+              {allCategories.map((item, index) => (
+                <li key={index}>
+                  <a href={`/category/${item.slug}`}>{item.title}</a>
                 </li>
-                <li>
-                  <Link href="/projects/category/design">Design</Link>
-                </li>
-                <li>
-                  <Link href="/projects/category/mobile">Mobilapplikationer</Link>
-                </li>
-                <li>
-                  <Link href="/projects/category/other">Övrigt</Link>
-                </li>
-              </ul>
-
+              ))}
+            </ul>
           </div>
+
           <div className="project-cards">
             {allProjects.map((project) => (
               <div key={project.slug} className="project-card">

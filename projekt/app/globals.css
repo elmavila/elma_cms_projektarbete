@@ -384,63 +384,121 @@ section h2 {
   color: #FADADD;
 }
 
-/* Dropdown Container */
-.dropdown-container {
-  position: relative;
-  margin-top: 20px;
+/* Kategorilista */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.category-list h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #2E2E2E;
+}
+
+.category-list ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-list li {
+  background-color: #FFFFFF;
+  border: 2px solid #FADADD;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
 }
 
-/* Dropdown Button */
-.dropdown-button {
+.category-list li:hover {
   background-color: #FADADD;
-  color: #333333;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  transform: translateY(-5px);
 }
 
-.dropdown-button:hover {
-  background-color: #333333;
+.category-list a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: bold;
+}
+
+/* Divider */
+.divider {
+  width: 40%;
+  /* Justera bredden */
+  height: 3px;
+  background-color: #FADADD;
+  margin: 2rem auto;
+  /* Centrerar och ger utrymme runt */
+  border-radius: 1px;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 2px;
+  background-color: #FADADD;
+  position: absolute;
+  top: 0;
+}
+
+
+
+.backButton {
+  background-color: #FFFFFF;
+  border: 2px solid #FADADD;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.backButton:hover {
+  background-color: #FADADD;
+  transform: translateY(-5px);
+}
+
+.backButton a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: bold;
+}
+
+.backButton a:hover {
   color: #FFFFFF;
 }
 
-/* Dropdown Menu */
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
-  list-style: none;
-  padding: 10px 0;
+
+
+/* Responsiv Anpassning */
+@media (max-width: 1024px) {
+  .filtered-projects .filtered-project-cards {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }
 
-.dropdown-menu li {
-  padding: 10px 20px;
-  font-size: 1rem;
-}
+@media (max-width: 768px) {
+  .filtered-projects .filtered-project-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 
-.dropdown-menu li:hover {
-  background-color: #f1f1f1;
+  .filtered-projects .filtered-project-card {
+    max-width: 100%;
+  }
 }
-
-/* Gör så att dropdownen inte syns om den är stängd */
-.dropdown-container ul {
-  display: none;
-}
-
-.dropdown-container ul.open {
-  display: block;
-}
-
 
 /* Huvudcontainer */
 .container {

@@ -80,6 +80,49 @@ const ALL_PROJECTS = `
 
 //kategorierna ska ha en query
 
+const CATEGORY_FIELDS = `
+  title
+  slug
+`
+const FILTERD_PROJECTS = `
+      title
+      slug
+      linkedFrom{
+        allProjectsCollection(limit: 10){items{projectPhoto {
+        title
+        description
+        contentType
+        fileName
+        size
+        url
+        width
+        height
+      }
+      projectTitle
+      projectDescription
+      mainText{
+      json
+      }
+      slug
+      multiImgCollection{
+        items{
+          title
+          description
+          url
+          width
+          height
+        }
+      }
+      categoryCollection(limit: 10){
+        items{
+          title
+          slug
+        }
+      }
+      url}}
+      }
+`
+
 const ABOUT_PRESENTATION = `
   title
   description
@@ -101,8 +144,6 @@ const CONTACT_HEAD = `
     description
     }
 `
-
-
 const CONTACT_INFO = `
   title
   contactInformation
@@ -231,6 +272,32 @@ export async function getSingleProject(slug) {
     }
   `)
   return query?.data?.allProjectsCollection?.items || {}
+}
+
+export async function getCategory() {
+  const query = await fetchGrafQL(`
+    query {
+      categoryCollection {
+        items {
+          ${CATEGORY_FIELDS}
+        }
+      }
+    }
+  `)
+  return query?.data?.categoryCollection?.items || {}
+}
+export async function getFilterdProjects(slug, limit = 10) {
+  const filterdQuery = await fetchGrafQL(`
+    query {
+      categoryCollection(where: {slug: "${slug}"}, limit: ${limit}) {
+        items {
+          ${FILTERD_PROJECTS}
+        }
+      }
+    }
+  `)
+  // console.log("filtrerade projekt 2", filterdQuery);
+  return filterdQuery
 }
 async function fetchGrafQL(query) {
   const response = await fetch('https://graphql.contentful.com/content/v1/spaces/8vn73cp47ezr', {
